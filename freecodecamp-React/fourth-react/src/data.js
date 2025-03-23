@@ -35,4 +35,40 @@ export default [
         dates: "01 Oct, 2021 - 18 Nov, 2021",
         text: "The Geiranger Fjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality."
     },
-]
+    {
+        id: 4,
+        img: {
+            src: "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg",
+            alt: "Eiffel Tower"
+        },
+        title: "Eiffel Tower",
+        country: "France",
+        googleMapsLink: "https://maps.app.goo.gl/FWqBqu9RDPf8AFtz7",
+        dates: "10 Mar, 2022 - 20 Mar, 2022",
+        text: "The Eiffel Tower is one of the most recognizable structures in the world. Located in Paris, France, it was completed in 1889 and attracts millions of visitors annually."
+    },
+    {
+        id: 5,
+        img: {
+            src: "https://images.pexels.com/photos/4159751/pexels-photo-4159751.jpeg",
+            alt: "Grand Canyon"
+        },
+        title: "Grand Canyon",
+        country: "USA",
+        googleMapsLink: "https://maps.app.goo.gl/LZ8eZf34Qt2kr64T7",
+        dates: "05 Sep, 2022 - 15 Sep, 2022",
+        text: "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona, USA. It is a UNESCO World Heritage Site and one of the most breathtaking natural wonders in the world."
+    },
+    {
+        id: 6,
+        img: {
+            src: "https://images.pexels.com/photos/417344/pexels-photo-417344.jpeg",
+            alt: "Taj Mahal"
+        },
+        title: "Taj Mahal",
+        country: "India",
+        googleMapsLink: "https://maps.app.goo.gl/WgyFZ8AYD5frXh4p9",
+        dates: "01 Dec, 2022 - 10 Dec, 2022",
+        text: "The Taj Mahal is a white marble mausoleum in Agra, India, built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal. It is one of the most famous landmarks in the world."
+    }
+];
