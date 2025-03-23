@@ -2,6 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import Header from './components/Header'
 import Entry from './components/Entry'
+import mountFuji from "./assets/mount-fuji.jpg"
+import datas from "./data"
+
 
 function App() {
   // const[date, setDate] = useState(0)
@@ -9,12 +12,27 @@ function App() {
   // setInterval(()=>{
   //   setDate(new Date().toLocaleString())
   // },1000)
+  const entryElements = datas.map((entry,index) => {
+    return ( <Entry 
+    key={index}  
+    img={{
+      src: entry.img.src,
+      alt: entry.img.alt
+    }}
+    title={entry.title}
+    date={entry.dates}
+    country={entry.country}
+    googleMapsLink={entry.googleMapsLink}
+    text={entry.text}
+    />
+  )
+  })
 
 
   return (
     <>
      <Header />
-     <Entry />
+     {entryElements}
      {/* <p> {date} </p> */}
     </>
   )
