@@ -5,8 +5,16 @@ import './App.css'
 import jokeData from '../jokeData'
 
 function App() {
-  const [count, setCount] = useState(0)
   // const names = ["cristiano","ramos","vini","mbappe","rodrygo","bellingham"]
+  const [isShown, setIsShown] = useState({})
+  const toggleShown = (index) => {
+    setIsShown((prevShown) => ({
+      ...prevShown,
+      [index]: !prevShown[index]
+    }))
+    // console.log(isShown);    
+  }
+  
   return (
     <>
      {/* <ul>
@@ -23,7 +31,9 @@ function App() {
       {jokeData.map((joke,index)=>(
         <div key={index}>
         <h2>Setup: {joke.setup} </h2>
-        <p>Punchline: {joke.punchline}  </p>
+        { isShown[index] &&  <p>Punchline: {joke.punchline}  </p>}
+        <button onClick={() => toggleShown(index)}>Show punchline</button>
+        <hr />
         </div>
       ))}
      </main>
