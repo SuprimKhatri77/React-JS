@@ -31,19 +31,34 @@ function App() {
 
     formElement.reset();
   };
-  const signUp = (formData) => {
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const description = formData.get("description")
-    const employmentStatus = formData.get("employmentStatus")
+  // const signUp = (formData) => {
+  //   const email = formData.get("email");
+  //   const password = formData.get("password");
+  //   const description = formData.get("description")
+  //   const employmentStatus = formData.get("employmentStatus")
+  //   const dietaryRestrictions = formData.getAll("dietaryRestrictions")
+  //   const favColor = formData.get("favColor")
     // console.log(email);
     // console.log(password);
     
-    console.log(description);
-    console.log(employmentStatus ? employmentStatus : "employment status not selected");
+    // console.log(description);
+    // console.log(employmentStatus ? employmentStatus : "employment status not selected");
+    // console.log(dietaryRestrictions ? dietaryRestrictions : "no checkbox selected.");
+    // console.log(favColor); 
+  // };
+
+  function signUp(formData){
+    const data = Object.fromEntries(formData)
+    const dietaryData = formData.getAll('dietaryRestrictions')
+    // console.log(dietaryData);
+    const allData = {
+      ...data,
+      dietaryRestrictions: dietaryData,
+    }
+    console.log(allData);
     
     
-  };
+  }
   return (
     <>
       {/* <form method="POST" id="my-form" onClick={handleSubmit}>
@@ -93,12 +108,38 @@ function App() {
               Full time
             </label>
             <label>
-              <input type="radio" name="employmentStatus" vlaue="Part time" />
+              <input type="radio" name="employmentStatus" defaultChecked={true} vlaue="Part time" />
               Part time
             </label>
           </fieldset>
           <br />
           <br />
+          <fieldset>
+            <legend>Dietary Resitrictions:</legend>
+            <label>
+              <input type="checkbox" name="dietaryRestrictions" value="kosher" />
+              kosher
+            </label>
+            <label>
+              <input type="checkbox" name="dietaryRestrictions" value="vegan" />
+              Vegan
+            </label>
+            <label>
+              <input type="checkbox" name="dietaryRestrictions" defaultChecked={true} value="gluten-free" />
+              Gluten-free
+            </label>
+          </fieldset>
+          <br /><br />
+          <label htmlFor="favColor">What's your favorite color?</label>
+          <select  id="favColor" name="favColor">
+            <option value="" disabled>Choose your favorite color</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+          </select>
+          <br /><br />
           <button>Submit</button>
         </form>
       </section>
