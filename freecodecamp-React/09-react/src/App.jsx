@@ -16,11 +16,19 @@ function App() {
 
   const ingredients = ["Chicken", "Oregano", "Tomatoes"]
 
-  const[isImportant,setIsImportant] = useState("yes")
+  // const[isImportant,setIsImportant] = useState("yes")
 
-  const changeAnswer = () => {
-    setIsImportant("Heck yes!")
-  }
+  // const changeAnswer = () => {
+  //   setIsImportant("Heck yes!")
+  // }
+
+  // const isGoingOut = false
+  // const answer = isGoingOut ? "yes" : "no"
+
+
+  const[isGoingOut, setIsGoingOut] = useState(true)
+
+
 
   return (
     <>
@@ -46,7 +54,14 @@ function App() {
         ))}
       </ul>
       <h2>Is state important to know ?</h2>
-      <button onClick={changeAnswer}> {isImportant} </button>
+      {/* <button onClick={changeAnswer}> {isImportant} </button> */}
+      {/* <button> {answer} </button> */}
+      {/* <button> { isGoingOut ? "yes" : "no" } </button> */}
+      <button onClick={() => {
+        setIsGoingOut(isGoingOut ? false : true)
+      }}
+      aria-label={`The current answer is ${isGoingOut ?  "yes" : "no"}. Click to change it `}
+      > {isGoingOut ?  "yes" : "no"} </button>
     </>
   )
 }

@@ -14,16 +14,8 @@ function App() {
   // },1000)
   const entryElements = datas.map((entry,index) => {
     return ( <Entry 
-    key={index}  
-    img={{
-      src: entry.img.src,
-      alt: entry.img.alt
-    }}
-    title={entry.title}
-    date={entry.dates}
-    country={entry.country}
-    googleMapsLink={entry.googleMapsLink}
-    text={entry.text}
+    key={entry.id}  
+    {...entry}
     />
   )
   })
