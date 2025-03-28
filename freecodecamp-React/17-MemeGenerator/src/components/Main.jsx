@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 export default function Main() {
 
@@ -6,7 +6,7 @@ export default function Main() {
         topText:"One does not simply",
         bottomText: "Walk into Mordor",
         image:{
-            url:"http://i.imgflip.com/1bij.jpg"
+            url:""
         }
     })
 
@@ -21,6 +21,41 @@ export default function Main() {
         ))
         
     }
+
+    const [allMemes,setAllMemes] = useState([])
+    
+    useEffect(() => {
+        fetch('https://api.imgflip.com/get_memes')
+        .then(response => response.json())
+        .then((data)=>{
+            setAllMemes(data["data"]["memes"])
+            
+            // console.log(data["data"]["memes"][0].url);
+            
+        })
+        .catch(error => console.log("error fecthing data", error))
+        .finally( () => console.log("the promise is either resolved or rejected."))
+        
+    },[])
+    // console.log(allMemes);
+
+        function getRandomImage(){
+            const randomNumber = Math.floor(Math.random() * 100)
+            // console.log(randomNumber);
+            const randomMemeUrl = allMemes[`${randomNumber}`]["url"]
+            // console.log(allMemes[`${randomNumber}`]["url"]);
+            
+                setMeme(prevMeme => (
+                    {
+                        ...prevMeme,
+                        image: {
+                            url: randomMemeUrl
+                        }
+                    }
+                ))
+            
+        }
+
     return (
         <main>
             <div className="form">
@@ -43,10 +78,10 @@ export default function Main() {
                         value={meme.bottomText}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button onClick={getRandomImage}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
-                <img src={meme.image.url} />
+                <img src={meme.image.url ? meme.image.url : "http://i.imgflip.com/1bij.jpg"} />
                 <span className="top"> {meme.topText} </span>
                 <span className="bottom"> {meme.bottomText} </span>
             </div>
