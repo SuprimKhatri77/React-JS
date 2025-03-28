@@ -1,11 +1,18 @@
-import React, {useState} from "react";
+import React, {useState,useRef, useEffect} from "react";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientList from "./IngredientList";
 import { getRecipeFromMistral } from "../utils/api";
 
 function Main() {
-  const [ingredients, setIngredients] = useState(["chicken breast","pasta","corn","spices"]);
+  const [ingredients, setIngredients] = useState(["chicken","all the main spices","paste","oregano"]);
   const [recipe, setRecipe] = useState("")
+  const recipeSection = useRef(null)
+
+  useEffect(()=> {
+    if(recipe !== "" && recipeSection.current !== null){
+      recipeSection.current.scrollIntoView({behavior: "smooth"})
+    }
+  },[recipe])
 
   // const handleSubmit = (event) => {
   //   event.preventDefault()
@@ -40,7 +47,7 @@ function Main() {
   return (
     <main className="my-12 md:my-20 font-['Inter'] mx-5 md:mx-0 ">
       <form
-        className="flex flex-col md:mx-[10px]  md:flex-row md:justify-center md:items-center gap-5"
+        className="flex flex-col sm:mx-auto md:mx-auto  sm:flex-row md:justify-center md:items-center gap-5"
         action={handleSubmit}
       >
         <input
@@ -51,7 +58,7 @@ function Main() {
           name="ingredient"
           autoComplete="off"
         />
-        <button className="bg-black text-white py-2 cursor-pointer rounded-md px-5 text-nowrap font-['Inter']">
+        <button className="bg-gray-700 hover:bg-gray-800 text-white py-2 cursor-pointer rounded-md px-5 text-nowrap font-['Inter']">
           + Add ingredient
         </button>
       </form>
@@ -59,6 +66,7 @@ function Main() {
       <IngredientList 
       ingredients={ingredients}
       getRecipe={getRecipe}
+      ref={recipeSection}
       />
 
       <ClaudeRecipe 
