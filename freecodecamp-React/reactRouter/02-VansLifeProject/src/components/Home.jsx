@@ -2,20 +2,23 @@ import React from "react";
 import Navbar from "./Navbar";
 import heroHome from "../assets/home-hero.png";
 import Footer from "./Footer";
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
     <>
-        <Navbar />
+      <Navbar />
       <section
-        className="h-screen relative bg-cover bg-no-repeat bg-center -z-20 font-['Poppins']"
+        className="h-screen relative bg-cover bg-no-repeat bg-center z-10 font-['Poppins']"
         style={{
           backgroundImage: `url(${heroHome})`,
         }}
       >
         <div
-          className="absolute h-full w-full -z-10"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+          className="absolute h-full w-full z-0 pointer-events-none"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+          }}
         ></div>
 
         <div className="h-full w-[90%] mx-auto flex flex-col md:justify-center gap-5 md:items-center py-[100px] relative z-10">
@@ -24,7 +27,15 @@ function Home() {
             Add adventure to your life by joining #vanlife movement.
             Rent the perfect van to make your perfect road trip
           </p>
-          <button className="text-white cursor-pointer bg-orange-600 py-3  w-fit px-10 rounded-md mt-8 font-medium text-sm hover:bg-orange-700 transition-all duration-300 ease-in-out md:text-xl ">Find your van</button>
+
+            <Link
+              to='/vans'
+              className="text-white cursor-pointer bg-orange-600 py-3 w-fit px-10 rounded-md mt-8 font-medium text-sm hover:bg-orange-700 transition-all duration-300 ease-in-out md:text-xl"
+              onClick={() => console.log("Clicked!")}
+            >
+              Find your van
+            </Link>
+
         </div>
       </section>
       <Footer />

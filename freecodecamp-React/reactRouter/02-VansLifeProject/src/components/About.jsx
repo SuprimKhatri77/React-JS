@@ -2,13 +2,14 @@ import React from 'react'
 import Navbar from './Navbar'
 import heroAbout from '../assets/about-hero.png'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 function About() {
   return (
     <>
       <Navbar />
     <section className='max-w-[95%] h-screen mx-auto my-3 flex flex-col lg:flex-row gap-8 lg:justify-between lg:items-center'>
-      <img src={heroAbout} alt="heroAbout" className='lg:h-[400px] lg:w-[500px] order-2 rounded-2xl object-cover object-center' />
+      <img src={heroAbout} alt="heroAbout" className='lg:h-[400px] lg:w-[500px] lg:order-2 rounded-2xl object-cover object-center' />
       <div className='flex flex-col gap-8 px-5'>
 
       <h2 className='font-bold text-xl md:text-4xl'>Don't squeeze in a sedan when you could relax in a van.</h2>
@@ -23,7 +24,7 @@ function About() {
         <p className='font-bold md:text-2xl'>Your destination is awaiting.</p>
         <p className='font-bold md:text-2xl'>Your van is ready.</p>
         </div>
-        <button className='text-white bg-black py-2 px-5 w-fit rounded-md font-bold text-xs cursor-pointer md:text-[16px]'>Explore our vans</button>
+        <Link to='/vans' className='text-white bg-black py-2 px-5 w-fit rounded-md font-bold text-xs cursor-pointer md:text-[16px] hover:scale-105 transition-all duration-300 ease-in hover:rounded-sm'>Explore our vans</Link>
       </div>
       </div>
     </section>
